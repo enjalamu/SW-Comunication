@@ -80,18 +80,20 @@ public class PrincipalView extends JFrame implements Observer {
 			public void keyPressed(KeyEvent e) { //al pulsar cualquier tecla
 				timer.stop();
 				if(vs1 == true){
-					JOptionPane.showMessageDialog(null, "Ha elegido la opción 1", "Info", JOptionPane.INFORMATION_MESSAGE);
-
+					cerrarVentana();
+					Opcion1 v = new Opcion1();
 				}
 				else if(vs2 == true){
-					JOptionPane.showMessageDialog(null, "Ha elegido la opción 2", "Info", JOptionPane.INFORMATION_MESSAGE);
-
+					cerrarVentana();
+					Opcion2 v = new Opcion2();
 				}
 				else if(vs3 == true){
-					JOptionPane.showMessageDialog(null, "Ha elegido la opción 3", "Info", JOptionPane.INFORMATION_MESSAGE);
-
+					cerrarVentana();
+					Opcion3 v = new Opcion3();
 				}
 			}
+
+			
 		});
 		
 		
@@ -141,5 +143,8 @@ public class PrincipalView extends JFrame implements Observer {
 		timer.start();
 			
 	}
-	
+	private void cerrarVentana() {
+		// TODO Auto-generated method stub
+		this.setVisible(false);
+	}
 }
