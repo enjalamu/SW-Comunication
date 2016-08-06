@@ -26,20 +26,20 @@ public class PrincipalView extends JFrame implements Observer {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnOpcion = new JButton("Opcion 2");
-		btnOpcion.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnOpcion.setBounds(144, 29, 146, 232);
-		contentPane.add(btnOpcion);
+		JButton btnOpcion_2 = new JButton("Opcion 2");
+		btnOpcion_2.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnOpcion_2.setBounds(144, 29, 146, 232);
+		contentPane.add(btnOpcion_2);
 		
-		JButton button = new JButton("Opcion 1");
-		button.setFont(new Font("Tahoma", Font.BOLD, 14));
-		button.setBounds(0, 29, 146, 232);
-		contentPane.add(button);
-		
-		JButton btnOpcion_1 = new JButton("Opcion 3");
+		JButton btnOpcion_1 = new JButton("Opcion 1");
 		btnOpcion_1.setFont(new Font("Tahoma", Font.BOLD, 14));
-		btnOpcion_1.setBounds(288, 29, 146, 232);
+		btnOpcion_1.setBounds(0, 29, 146, 232);
 		contentPane.add(btnOpcion_1);
+		
+		JButton btnOpcion_3 = new JButton("Opcion 3");
+		btnOpcion_3.setFont(new Font("Tahoma", Font.BOLD, 14));
+		btnOpcion_3.setBounds(288, 29, 146, 232);
+		contentPane.add(btnOpcion_3);
 		
 		JToolBar toolBar = new JToolBar();
 		toolBar.setBackground(Color.LIGHT_GRAY);
