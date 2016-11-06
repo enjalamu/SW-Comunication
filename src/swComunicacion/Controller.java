@@ -14,5 +14,9 @@ public class Controller {
 		// TODO Auto-generated method stub
 		d.AnadirVista(vista);
 	}
+	
+	public void cambiarModo(boolean modo){
+		d.notifyCambioModo(modo);
+	}
 
 }
