@@ -22,6 +22,7 @@ import java.awt.event.KeyEvent;
 
 import javax.swing.JLabel;
 import javax.swing.JSplitPane;
+import javax.swing.JTextField;
 
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -43,6 +44,7 @@ public class PrincipalView extends JFrame implements Observer {
 	private JButton btnHelp;
 	private JButton modo;
 	private boolean m;
+	private JTextField text1;
 	
 	public PrincipalView(Controller c2) {
 		c = c2;
