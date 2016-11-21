@@ -17,7 +17,10 @@ import java.util.LinkedList;
 import javax.swing.JButton;
 import javax.swing.JTextArea;
 
-public class Opcion2 extends JFrame {
+import swComunicacion.Controller;
+import swComunicacion.Observer;
+
+public class Opcion2 extends JFrame implements Observer{
 	
 	private static final long serialVersionUID = 1L;
 	private  JTextArea textArea;
@@ -53,8 +56,11 @@ public class Opcion2 extends JFrame {
 	private JButton btnM;
 	private JButton btnEspacio;
 	private int frecuencia = 500;
-
-	public Opcion2() {
+	private ToolbarSup t;
+	private Controller c;
+	
+	public Opcion2(Controller controlador) {
+		this.c = controlador;
 		setTitle("Opcion 2");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 574, 379);
@@ -65,6 +71,8 @@ public class Opcion2 extends JFrame {
 		botones = new LinkedList<JButton>();
 		bBotones = new LinkedList<Boolean>();
 		JPanel panel = new JPanel();
+		t = new ToolbarSup(c);
+		contentPane.add(t, BorderLayout.NORTH);
 		contentPane.add(panel, BorderLayout.CENTER);
 		panel.setLayout(null);
 		
@@ -78,7 +86,6 @@ public class Opcion2 extends JFrame {
 		textArea.setFocusable(false);
 		textArea.setBounds(10, 11, 529, 60);
 		panel.add(textArea);
-		
 		JButton btnQ = new JButton("Q");
 		btnQ.setBounds(10, 82, 44, 44);
 		btnQ.addKeyListener(new KeyAdapter() {
@@ -394,6 +401,13 @@ public class Opcion2 extends JFrame {
 		    } 
 		}); 
 		timer.start();
-					
+		//this.btnA.requestFocus();
+		this.c.addObserver(this);			
+	}
+
+	public void onCambioOpcion(boolean opc) {
+		// TODO Auto-generated method stub
+		if(!opc)
+		this.setVisible(false);
 	}
 }

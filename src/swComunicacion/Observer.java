@@ -2,5 +2,5 @@ package swComunicacion;
 
 public interface Observer {
 
-	void onCambioModo(boolean modo);
+	void onCambioOpcion(boolean op);
 }

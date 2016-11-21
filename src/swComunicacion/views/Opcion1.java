@@ -18,13 +18,15 @@ import javax.swing.Timer;
 import javax.swing.border.EmptyBorder;
 
 import swComunicacion.Controller;
+import swComunicacion.Observer;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 
-public class Opcion1 extends JFrame {
+public class Opcion1 extends JFrame implements Observer{
 
 	//private static final long serialVersionUID = 1L;
 	private JPanel contentPane;
@@ -35,7 +37,7 @@ public class Opcion1 extends JFrame {
 	private boolean vs1;
 	private boolean vs2;
 	private boolean vsExtra;
-	private int frecuencia = 3000;
+	private int frecuencia = 2000;
 	private Controller c;
 	private ImageIcon si;
 	private ImageIcon no;
@@ -45,6 +47,8 @@ public class Opcion1 extends JFrame {
 	private boolean editando;
 	private JButton btnEditarOpciones;
 	private JButton btnAdd;
+	private ToolbarSup t;
+	
 	public Opcion1(Controller controlador) {
 		this.c = controlador;
 		setTitle("Opcion 1");
@@ -59,6 +63,11 @@ public class Opcion1 extends JFrame {
 		panel.setBackground(Color.WHITE);
 		panel.setBounds(100, 100, 450, 300);
 		panel.setLayout(null);
+		
+		// PONER DIMENSIONES
+		//t = new Toolbar(c);
+		//panel.add(t);
+		
 		panel.add(btnOpcion_1);
 		
 		vs1 = true;
@@ -231,12 +240,13 @@ public class Opcion1 extends JFrame {
 		vsExtra = false;
 		
 		this.setVisible(true);
-		
 		timer.start();
+		this.c.addObserver(this);
 	}
 
-	private void cerrarVentana() {
+	public void onCambioOpcion(boolean opc) {
 		// TODO Auto-generated method stub
+		if(!opc)
 		this.setVisible(false);
 	}
 }

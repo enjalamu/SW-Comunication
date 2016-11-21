@@ -9,14 +9,14 @@ public class Controller {
 		// TODO Auto-generated constructor stub
 		d = d2;
 	}
-
-	public void anadirVista(PrincipalView vista) {
-		// TODO Auto-generated method stub
-		d.AnadirVista(vista);
+	
+	public boolean addObserver(Observer po) {
+		return d.addObserver(po);
 	}
 	
-	public void cambiarModo(boolean modo){
-		d.notifyCambioModo(modo);
+
+	public void onCambioOpcion(boolean op){
+		d.notifyCambioOpcion(op);
 	}
 
 }

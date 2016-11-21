@@ -1,9 +1,12 @@
 package swComunicacion.views;
 
 import java.awt.BorderLayout;
-import java.awt.Graphics;
+import java.awt.Color;
 import java.awt.GridLayout;
-import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -15,39 +18,37 @@ import javax.swing.border.EmptyBorder;
 
 import swComunicacion.Controller;
 import swComunicacion.Observer;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyAdapter;
-import java.awt.event.KeyEvent;
-import java.awt.event.ActionEvent;
-import java.awt.Color;
+import javax.swing.JSplitPane;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 @SuppressWarnings("serial")
-public class Opcion3 extends JFrame implements Observer{
+public class GaleriaBd1 extends JFrame implements Observer{
 
 	private JPanel contentPane;
 	private Controller c;
 	private JPanel aux;
-	private JButton b1;
-	private ImageIcon tv;
-	private JLabel l1;
-	private JButton btn1;
-	private JButton btn2;
-	private JButton btn3;
-	private JButton btn4;
 	private boolean vs1;
 	private boolean vs2;
 	private boolean vs3;
 	private boolean vs4;
 	private Timer timer;
 	private int frecuencia = 2000;
-	//private Image tv;
-	//private Graphics g;
-	//TV, MUSICA, BAÑO, TAREAS
+	private JSplitPane splitPane;
+	private JPanel panel;
+	private JPanel panel_1;
+	private JButton btnAdd;
+	private JButton btnDel;
+	private JButton btn1;
+	private JButton btn3;
+	private JButton btn2;
+	private JButton btn4;
+	private JButton btnOrdenar;
 	
-	public Opcion3(Controller controlador) {
+	
+	public GaleriaBd1(Controller controlador) {
 		this.c = controlador;
-		setTitle("Opcion 3");
+		setTitle("Bd1");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -56,28 +57,52 @@ public class Opcion3 extends JFrame implements Observer{
 		setContentPane(contentPane);
 		
 		aux = new JPanel();
+		aux.setBackground(Color.WHITE);
 		
 		getContentPane().add(aux, BorderLayout.CENTER);
-		aux.setLayout(new GridLayout(2, 2, 0, 0));
+		aux.setLayout(new GridLayout(1, 2, 0, 0));
 		
-		btn2 = new JButton("TV");
-		btn2.setBackground(Color.GREEN);
-		aux.add(btn2);
+		splitPane = new JSplitPane();
+		aux.add(splitPane);
+		
+		panel = new JPanel();
+		splitPane.setLeftComponent(panel);
+		panel.setLayout(new GridLayout(0, 1, 10, 80));
+		
+		btnAdd = new JButton("A\u00F1adir");
+		btnAdd.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent arg0) {
+				
+			}
+		});
+		panel.add(btnAdd);
+		panel.add(btnAdd, 5);
+		
+		btnOrdenar = new JButton("Ordenar");
+		panel.add(btnOrdenar);
+		
+		btnDel = new JButton("Eliminar");
+		panel.add(btnDel);
+		
+		panel_1 = new JPanel();
+		splitPane.setRightComponent(panel_1);
+		panel_1.setLayout(new GridLayout(2, 2, 5, 5));
+		
+		btn1 = new JButton("New button");
+		panel_1.add(btn1);
+		
+		btn2 = new JButton("New button");
+		panel_1.add(btn2);
+		
+		btn3 = new JButton("New button");
+		panel_1.add(btn3);
+		
+		btn4 = new JButton("New button");
+		panel_1.add(btn4);
 		vs1 = true;
-		
-		btn1 = new JButton("Musica");
-		btn1.setBackground(Color.RED);
-		aux.add(btn1);
 		vs2 = false;
-		
-		btn3 = new JButton("Tareas");
-		btn3.setBackground(Color.RED);
-		aux.add(btn3);
 		vs3 = false;
-		
-		btn4 = new JButton("Baño");
-		btn4.setBackground(Color.RED);
-		aux.add(btn4);
 		vs4 = false;
 		
 		timer = new Timer (frecuencia, new ActionListener () 
@@ -114,20 +139,8 @@ public class Opcion3 extends JFrame implements Observer{
 		    	}
 		    	
 		     } 
-		}); 
-		
-		btn1.addKeyListener(new KeyAdapter() {
-			
-			public void keyPressed(KeyEvent e) { //al pulsar cualquier tecla
-				if(vs1 == true){
-					timer.stop();
-					onCambioOpcion(false);
-					Bd1 v = new Bd1(c);
-				}
-			}
-			});
-		btn1.requestFocus();
-		timer.start();
+		});
+		timer.stop();
 		this.setVisible(true);
 		this.c.addObserver(this);
 	}
