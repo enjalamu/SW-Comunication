@@ -52,8 +52,8 @@ public class Opcion1 extends JFrame implements Observer{
 	public Opcion1(Controller controlador) {
 		this.c = controlador;
 		setTitle("Opcion 1");
-		this.si = new ImageIcon("si.png");
-		this.no = new ImageIcon("no.png");
+		this.si = new ImageIcon("imagenes/si.png");
+		this.no = new ImageIcon("imagenes/no.png");
 		btnOpcion_1 = new JButton("SI");
 		btnOpcion_1.setBounds(45, 75, 117, 79);
 		btnOpcion_1.setBackground(Color.GREEN);
